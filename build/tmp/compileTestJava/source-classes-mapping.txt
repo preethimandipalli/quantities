@@ -1,2 +1,0 @@
-utility/MeasurementTest.java
- utility.MeasurementTest
