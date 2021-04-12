@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="utility.MeasurementTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-12T09:27:19" hostname="MacBook-Air-4.local" time="0.037">
+  <properties/>
+  <testcase name="TestIfOneCMIsEqualToOneCM()" classname="utility.MeasurementTest" time="0.037"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
