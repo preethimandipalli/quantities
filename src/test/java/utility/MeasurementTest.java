@@ -8,8 +8,8 @@ public class MeasurementTest {
     @Test
     void TestIfOneCMIsEqualToOneCM(){
 
-        Measurements measurement1 = new Measurements(1,"cm");
-        Measurements measurement2 = new Measurements(1,"cm");
+        Measurements measurement1 = new Measurements(1,MeasurementTypes.CENTIMETER);
+        Measurements measurement2 = new Measurements(1,MeasurementTypes.CENTIMETER);
 
         boolean actualValue = measurement1.equals(measurement2);
 

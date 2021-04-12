@@ -4,9 +4,9 @@ import java.util.Objects;
 public class Measurements {
 
     private int quantity ;
-    private String unit;
+    private MeasurementTypes unit;
 
-    public Measurements(int quantity, String unit) {
+    public Measurements(int quantity, MeasurementTypes unit) {
         this.quantity = quantity;
         this.unit = unit;
     }
