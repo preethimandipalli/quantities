@@ -39,4 +39,16 @@ public class Measurements {
         }
         return  new Measurements(result,unit);
     }
+
+    public Measurements subtract(Measurements measurement2) {
+        double result =0;
+        if(this.unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.CENTIMETER){
+            result = this.length - (measurement2.length /100);
+        }
+        else if(this.unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.METER){
+            result = this.length - (measurement2.length*100);
+        }
+        return  new Measurements(result,unit);
+
+    }
 }

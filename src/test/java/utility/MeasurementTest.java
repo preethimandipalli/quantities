@@ -48,4 +48,14 @@ public class MeasurementTest {
 
         assertEquals(actualValue,expectedValue);
     }
+    @Test
+    void testIf2000CM_Minus1MIsEqualTo1900CM(){
+        Measurements measurement1 = new Measurements(2000,MeasurementTypes.CENTIMETER);
+        Measurements measurement2 = new Measurements(1,MeasurementTypes.METER);
+        Measurements expectedValue = new Measurements(1900,MeasurementTypes.CENTIMETER);
+
+        Measurements actualValue = measurement1.subtract(measurement2);
+
+        assertEquals(actualValue,expectedValue);
+    }
 }
