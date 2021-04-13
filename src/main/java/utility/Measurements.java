@@ -3,11 +3,11 @@ import java.util.Objects;
 
 public class Measurements {
 
-    private double quantity ;
+    private double length ;
     private MeasurementTypes unit;
 
     public Measurements(double quantity, MeasurementTypes unit) {
-        this.quantity = quantity;
+        this.length = quantity;
         this.unit = unit;
     }
 
@@ -16,16 +16,27 @@ public class Measurements {
         if (this == o) return true;
         Measurements measurement2 = (Measurements) o;
         if(unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.CENTIMETER){
-            return quantity == (measurement2.quantity)/100 ;
+            return length == (measurement2.length)/100 ;
         }
         else if(unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.KILOMETER){
-            return  quantity == measurement2.quantity * 100000;
+            return  length == measurement2.length * 100000;
         }
-        return quantity == measurement2.quantity && unit == measurement2.unit;
+        return length == measurement2.length && unit == measurement2.unit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(quantity, unit);
+        return Objects.hash(length, unit);
+    }
+
+    public Measurements add(Measurements measurement2) {
+        double result =0;
+        if(this.unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.CENTIMETER){
+            result = this.length + (measurement2.length /100);
+        }
+        else if(this.unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.KILOMETER){
+            result = this.length + (measurement2.length*100000);
+        }
+        return  new Measurements(result,unit);
     }
 }
