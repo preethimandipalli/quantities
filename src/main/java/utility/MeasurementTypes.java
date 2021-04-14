@@ -4,5 +4,7 @@ public enum  MeasurementTypes {
 
     CENTIMETER,
     METER,
-    KILOMETER;
+    KILOMETER,
+    GRAM,
+    KILOGRAM;
 }

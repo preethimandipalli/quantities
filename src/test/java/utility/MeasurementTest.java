@@ -58,4 +58,26 @@ public class MeasurementTest {
 
         assertEquals(actualValue,expectedValue);
     }
+
+    @Test
+    void testIf1GIsEqual1G(){
+        Measurements measurement1 = new Measurements(1,MeasurementTypes.GRAM);
+        Measurements measurement2 = new Measurements(1,MeasurementTypes.GRAM);
+
+        boolean actualValue = measurement1.equals(measurement2);
+
+        assertTrue(actualValue);
+    }
+
+    @Test
+    void testIf0_1KGIsEqualTo100G(){
+        Measurements measurement1 = new Measurements(0.1,MeasurementTypes.KILOGRAM);
+        Measurements measurement2 = new Measurements(100,MeasurementTypes.GRAM);
+        measurement1.convertWeightToLength();
+        measurement2.convertWeightToLength();
+
+        boolean actualValue = measurement1.equals(measurement2);
+
+        assertTrue(actualValue);
+    }
 }

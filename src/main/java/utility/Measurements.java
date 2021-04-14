@@ -6,8 +6,8 @@ public class Measurements {
     private double length ;
     private MeasurementTypes unit;
 
-    public Measurements(double quantity, MeasurementTypes unit) {
-        this.length = quantity;
+    public Measurements(double length, MeasurementTypes unit) {
+        this.length = length;
         this.unit = unit;
     }
 
@@ -20,6 +20,9 @@ public class Measurements {
         }
         else if(unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.KILOMETER){
             return  length == measurement2.length * 100000;
+        }
+        else if(unit == MeasurementTypes.KILOMETER && measurement2.unit == MeasurementTypes.METER){
+            return  length*1000 == measurement2.length;
         }
         return length == measurement2.length && unit == measurement2.unit;
     }
@@ -49,6 +52,19 @@ public class Measurements {
             result = this.length - (measurement2.length*100);
         }
         return  new Measurements(result,unit);
+
+    }
+
+    public void convertWeightToLength() {
+
+        if(this.unit == MeasurementTypes.GRAM){
+            this.unit = MeasurementTypes.METER;
+        }
+        else if(this.unit == MeasurementTypes.KILOGRAM){
+            this.unit = MeasurementTypes.KILOMETER;
+        }
+
+
 
     }
 }
