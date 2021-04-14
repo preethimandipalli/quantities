@@ -45,6 +45,8 @@ public class MeasurementTest {
         Measurements expectedValue = new Measurements(2,MeasurementTypes.METER);
 
         Measurements actualValue = measurement1.add(measurement2);
+        System.out.println(actualValue);
+        System.out.println(expectedValue);
 
         assertEquals(actualValue,expectedValue);
     }
@@ -80,4 +82,31 @@ public class MeasurementTest {
 
         assertTrue(actualValue);
     }
+    @Test
+    void testIf10GPlus1KGIsEqualTo1010G(){
+        Measurements measurement1 = new Measurements(10,MeasurementTypes.GRAM);
+        Measurements measurement2 = new Measurements(1,MeasurementTypes.KILOGRAM);
+        Measurements expectedValue = new Measurements(1010,MeasurementTypes.GRAM);
+        measurement1.convertWeightToLength();
+        measurement2.convertWeightToLength();
+
+        Measurements actualValue = measurement1.add(measurement2);
+        actualValue.convertToLengthToWeight();
+
+        assertEquals(actualValue,expectedValue);
+    }
+    @Test
+    void testIf1_5KGMinus500GIsEqualTo1KG(){
+        Measurements measurement1 = new Measurements(1.5,MeasurementTypes.KILOGRAM);
+        Measurements measurement2 = new Measurements(500,MeasurementTypes.GRAM);
+        Measurements expectedValue = new Measurements(1,MeasurementTypes.KILOGRAM);
+        measurement1.convertWeightToLength();
+        measurement2.convertWeightToLength();
+
+        Measurements actualValue = measurement1.subtract(measurement2);
+        actualValue.convertToLengthToWeight();
+
+        assertEquals(actualValue,expectedValue);
+    }
+
 }

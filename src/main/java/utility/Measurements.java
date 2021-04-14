@@ -40,6 +40,9 @@ public class Measurements {
         else if(this.unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.KILOMETER){
             result = this.length + (measurement2.length*100000);
         }
+        else if(this.unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.KILOMETER){
+            result = this.length + (measurement2.length *1000);
+        }
         return  new Measurements(result,unit);
     }
 
@@ -50,6 +53,9 @@ public class Measurements {
         }
         else if(this.unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.METER){
             result = this.length - (measurement2.length*100);
+        }
+        else if(this.unit == MeasurementTypes.KILOMETER && measurement2.unit == MeasurementTypes.METER){
+            result = this.length - (measurement2.length /1000);
         }
         return  new Measurements(result,unit);
 
@@ -63,8 +69,16 @@ public class Measurements {
         else if(this.unit == MeasurementTypes.KILOGRAM){
             this.unit = MeasurementTypes.KILOMETER;
         }
-
-
-
     }
+
+    public void convertToLengthToWeight() {
+
+        if(this.unit == MeasurementTypes.METER){
+            this.unit = MeasurementTypes.GRAM;
+        }
+        else if(this.unit == MeasurementTypes.KILOMETER){
+            this.unit = MeasurementTypes.KILOGRAM;
+        }
+        }
+
 }
