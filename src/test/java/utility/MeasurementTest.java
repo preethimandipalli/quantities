@@ -48,22 +48,22 @@ public class MeasurementTest {
 
        assertEquals(actualValue,expectedValue);
     }
-    /*
+
     @Test
     void testIf2000CM_Minus1MIsEqualTo1900CM(){
-        Length measurement1 = new Length(2000,LengthTypes.CENTIMETER);
-        Length measurement2 = new Length(1,LengthTypes.METER);
-        Length expectedValue = new Length(1900,LengthTypes.CENTIMETER);
+        Measurements<Length> measurement1 = new Length(2000,MeasurementTypes.CENTIMETER);
+        Measurements<Length> measurement2 = new Length(1,MeasurementTypes.METER);
+        Length expectedValue = new Length(1900,MeasurementTypes.CENTIMETER);
 
-        Length actualValue = measurement1.subtract(measurement2);
+        Length actualValue = measurement1.subtract((Length)measurement2);
 
         assertEquals(actualValue,expectedValue);
-    }*/
+    }
 
     @Test
     void testIf1GIsEqual1G(){
-        Length measurement1 = new Length(1,MeasurementTypes.GRAM);
-        Length measurement2 = new Length(1,MeasurementTypes.GRAM);
+        Weight measurement1 = new Weight(1,MeasurementTypes.GRAM);
+        Weight measurement2 = new Weight(1,MeasurementTypes.GRAM);
 
         boolean actualValue = measurement1.equals(measurement2);
 
@@ -90,16 +90,15 @@ public class MeasurementTest {
         assertEquals(actualValue,expectedValue);
     }
 
-   /* @Test
+    @Test
     void testIf1_5KGMinus500GIsEqualTo1KG(){
-        Length measurement1 = new Length(1.5,WeightTypes.KILOGRAM);
-        Length measurement2 = new Length(500,WeightTypes.GRAM);
-        Length expectedValue = new Length(1,WeightTypes.KILOGRAM);
+        Measurements<Weight> measurement1 = new Weight(1.5,MeasurementTypes.KILOGRAM);
+        Measurements<Weight> measurement2 = new Weight(500,MeasurementTypes.GRAM);
+        Weight expectedValue = new Weight(1,MeasurementTypes.KILOGRAM);
 
-
-        Length actualValue = measurement1.subtract(measurement2);
+        Weight actualValue = measurement1.subtract((Weight) measurement2);
 
         assertEquals(actualValue,expectedValue);
-    }*/
+    }
 
 }

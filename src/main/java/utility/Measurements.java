@@ -11,10 +11,15 @@ public abstract class Measurements<T extends Measurements>{
     }
     public abstract T createObject(double dimension);
     public abstract double ConvertIntoDefaultUnit(double dimension, MeasurementTypes unit);
-    public T add(T measurement2) {
 
-        double sum= ConvertIntoDefaultUnit(quantity,unit)+ ConvertIntoDefaultUnit(measurement2.quantity,measurement2.unit);
+    public T add(T measurement2) {
+        double sum= ConvertIntoDefaultUnit(quantity,unit) + ConvertIntoDefaultUnit(measurement2.quantity,measurement2.unit);
         return (T) createObject(sum);
+    }
+
+    public T subtract(T measurement2){
+        double difference= ConvertIntoDefaultUnit(quantity,unit) - ConvertIntoDefaultUnit(measurement2.quantity,measurement2.unit);
+        return (T) createObject(difference);
     }
 
     @Override
