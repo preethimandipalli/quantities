@@ -6,16 +6,15 @@ public  class Length extends  Measurements{
     }
     public double ConvertIntoDefaultUnit(double quantity, MeasurementTypes unit){
         if(unit == MeasurementTypes.CENTIMETER){
-            return quantity/100000;
+            return  quantity/100000;
         }
         else if(unit == MeasurementTypes.METER){
-            return quantity/1000;
+           return quantity/1000;
         }
-          return quantity;
+        return quantity;
     }
+    public MeasurementTypes getDefaultType(){
+        return  MeasurementTypes.KILOMETER;
 
-    public Length createObject(double quantity){
-        System.out.println(quantity);
-        return new Length(quantity, MeasurementTypes.KILOMETER);
     }
 }
