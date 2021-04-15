@@ -1,9 +1,8 @@
 package utility;
 
-public enum  MeasurementTypes {
-
-    CENTIMETER,
+public enum MeasurementTypes {
     METER,
+    CENTIMETER,
     KILOMETER,
     GRAM,
     KILOGRAM;

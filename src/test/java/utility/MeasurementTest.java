@@ -7,11 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MeasurementTest {
 
-    @Test
+   @Test
     void testIf1CMIsEqualTo1CM(){
 
-        Measurements measurement1 = new Measurements(1,MeasurementTypes.CENTIMETER);
-        Measurements measurement2 = new Measurements(1,MeasurementTypes.CENTIMETER);
+        Length measurement1 = new Length(1, MeasurementTypes.CENTIMETER);
+        Length measurement2 = new Length(1, MeasurementTypes.CENTIMETER);
 
         boolean actualValue = measurement1.equals(measurement2);
 
@@ -20,8 +20,8 @@ public class MeasurementTest {
 
     @Test
     void testIf1MeterIsEqualTo100CM(){
-        Measurements measurement1 = new Measurements(1,MeasurementTypes.METER);
-        Measurements measurement2 = new Measurements(100,MeasurementTypes.CENTIMETER);
+        Length measurement1 = new Length(1,MeasurementTypes.METER);
+        Length measurement2 = new Length(100,MeasurementTypes.CENTIMETER);
 
         boolean actualValue = measurement1.equals(measurement2);
 
@@ -30,8 +30,8 @@ public class MeasurementTest {
 
     @Test
     void testIf100CMIsEqualTo0_001KM(){
-        Measurements measurement1 = new Measurements(100,MeasurementTypes.CENTIMETER);
-        Measurements measurement2 = new Measurements(0.001,MeasurementTypes.KILOMETER);
+        Length measurement1 = new Length(100,MeasurementTypes.CENTIMETER);
+        Length measurement2 = new Length(0.001,MeasurementTypes.KILOMETER);
 
         boolean actualValue = measurement1.equals(measurement2);
 
@@ -40,31 +40,30 @@ public class MeasurementTest {
 
     @Test
     void testIf1MPlus100CMIsEqualTo2M(){
-        Measurements measurement1 = new Measurements(1,MeasurementTypes.METER);
-        Measurements measurement2 = new Measurements(100,MeasurementTypes.CENTIMETER);
-        Measurements expectedValue = new Measurements(2,MeasurementTypes.METER);
+       Measurements<Length> measurement1 = new Length(1, MeasurementTypes.METER) ;
+       Measurements<Length>measurement2 = new Length(100, MeasurementTypes.CENTIMETER);
+       Length expectedValue = new Length(2, MeasurementTypes.METER);
 
-        Measurements actualValue = measurement1.add(measurement2);
-        System.out.println(actualValue);
-        System.out.println(expectedValue);
+       Measurements<Length> actualValue = measurement1.add((Length) measurement2);
 
-        assertEquals(actualValue,expectedValue);
+       assertEquals(actualValue,expectedValue);
     }
+    /*
     @Test
     void testIf2000CM_Minus1MIsEqualTo1900CM(){
-        Measurements measurement1 = new Measurements(2000,MeasurementTypes.CENTIMETER);
-        Measurements measurement2 = new Measurements(1,MeasurementTypes.METER);
-        Measurements expectedValue = new Measurements(1900,MeasurementTypes.CENTIMETER);
+        Length measurement1 = new Length(2000,LengthTypes.CENTIMETER);
+        Length measurement2 = new Length(1,LengthTypes.METER);
+        Length expectedValue = new Length(1900,LengthTypes.CENTIMETER);
 
-        Measurements actualValue = measurement1.subtract(measurement2);
+        Length actualValue = measurement1.subtract(measurement2);
 
         assertEquals(actualValue,expectedValue);
-    }
+    }*/
 
     @Test
     void testIf1GIsEqual1G(){
-        Measurements measurement1 = new Measurements(1,MeasurementTypes.GRAM);
-        Measurements measurement2 = new Measurements(1,MeasurementTypes.GRAM);
+        Length measurement1 = new Length(1,MeasurementTypes.GRAM);
+        Length measurement2 = new Length(1,MeasurementTypes.GRAM);
 
         boolean actualValue = measurement1.equals(measurement2);
 
@@ -73,10 +72,8 @@ public class MeasurementTest {
 
     @Test
     void testIf0_1KGIsEqualTo100G(){
-        Measurements measurement1 = new Measurements(0.1,MeasurementTypes.KILOGRAM);
-        Measurements measurement2 = new Measurements(100,MeasurementTypes.GRAM);
-        measurement1.convertWeightToLength();
-        measurement2.convertWeightToLength();
+        Weight measurement1 = new Weight(0.1,MeasurementTypes.KILOGRAM);
+        Weight measurement2 = new Weight(100,MeasurementTypes.GRAM);
 
         boolean actualValue = measurement1.equals(measurement2);
 
@@ -84,29 +81,25 @@ public class MeasurementTest {
     }
     @Test
     void testIf10GPlus1KGIsEqualTo1010G(){
-        Measurements measurement1 = new Measurements(10,MeasurementTypes.GRAM);
-        Measurements measurement2 = new Measurements(1,MeasurementTypes.KILOGRAM);
-        Measurements expectedValue = new Measurements(1010,MeasurementTypes.GRAM);
-        measurement1.convertWeightToLength();
-        measurement2.convertWeightToLength();
+        Measurements<Weight> measurement1 = new Weight(10, MeasurementTypes.GRAM);
+        Measurements<Weight> measurement2 = new Weight(1, MeasurementTypes.KILOGRAM);
+        Weight expectedValue = new Weight(1010, MeasurementTypes.GRAM);
 
-        Measurements actualValue = measurement1.add(measurement2);
-        actualValue.convertToLengthToWeight();
+        Measurements actualValue = measurement1.add((Weight) measurement2);
 
         assertEquals(actualValue,expectedValue);
     }
-    @Test
+
+   /* @Test
     void testIf1_5KGMinus500GIsEqualTo1KG(){
-        Measurements measurement1 = new Measurements(1.5,MeasurementTypes.KILOGRAM);
-        Measurements measurement2 = new Measurements(500,MeasurementTypes.GRAM);
-        Measurements expectedValue = new Measurements(1,MeasurementTypes.KILOGRAM);
-        measurement1.convertWeightToLength();
-        measurement2.convertWeightToLength();
+        Length measurement1 = new Length(1.5,WeightTypes.KILOGRAM);
+        Length measurement2 = new Length(500,WeightTypes.GRAM);
+        Length expectedValue = new Length(1,WeightTypes.KILOGRAM);
 
-        Measurements actualValue = measurement1.subtract(measurement2);
-        actualValue.convertToLengthToWeight();
+
+        Length actualValue = measurement1.subtract(measurement2);
 
         assertEquals(actualValue,expectedValue);
-    }
+    }*/
 
 }

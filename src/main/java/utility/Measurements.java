@@ -1,84 +1,28 @@
 package utility;
-import java.util.Objects;
 
-public class Measurements {
+public abstract class Measurements<T extends Measurements>{
 
-    private double length ;
-    private MeasurementTypes unit;
+    double quantity;
+    MeasurementTypes unit;
 
-    public Measurements(double length, MeasurementTypes unit) {
-        this.length = length;
+    public Measurements(double dimension, MeasurementTypes unit) {
+        this.quantity = dimension;
         this.unit = unit;
+    }
+    public abstract T createObject(double dimension);
+    public abstract double ConvertIntoDefaultUnit(double dimension, MeasurementTypes unit);
+    public T add(T measurement2) {
+
+        double sum= ConvertIntoDefaultUnit(quantity,unit)+ ConvertIntoDefaultUnit(measurement2.quantity,measurement2.unit);
+        return (T) createObject(sum);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        Measurements measurement2 = (Measurements) o;
-        if(unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.CENTIMETER){
-            return length == (measurement2.length)/100 ;
-        }
-        else if(unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.KILOMETER){
-            return  length == measurement2.length * 100000;
-        }
-        else if(unit == MeasurementTypes.KILOMETER && measurement2.unit == MeasurementTypes.METER){
-            return  length*1000 == measurement2.length;
-        }
-        return length == measurement2.length && unit == measurement2.unit;
+        if (o == null || getClass() != o.getClass()) return false;
+        Measurements that = (Measurements) o;
+        return (ConvertIntoDefaultUnit(quantity,unit) == ConvertIntoDefaultUnit(that.quantity,that.unit));
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(length, unit);
-    }
-
-    public Measurements add(Measurements measurement2) {
-        double result =0;
-        if(this.unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.CENTIMETER){
-            result = this.length + (measurement2.length /100);
-        }
-        else if(this.unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.KILOMETER){
-            result = this.length + (measurement2.length*100000);
-        }
-        else if(this.unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.KILOMETER){
-            result = this.length + (measurement2.length *1000);
-        }
-        return  new Measurements(result,unit);
-    }
-
-    public Measurements subtract(Measurements measurement2) {
-        double result =0;
-        if(this.unit == MeasurementTypes.METER && measurement2.unit == MeasurementTypes.CENTIMETER){
-            result = this.length - (measurement2.length /100);
-        }
-        else if(this.unit == MeasurementTypes.CENTIMETER && measurement2.unit == MeasurementTypes.METER){
-            result = this.length - (measurement2.length*100);
-        }
-        else if(this.unit == MeasurementTypes.KILOMETER && measurement2.unit == MeasurementTypes.METER){
-            result = this.length - (measurement2.length /1000);
-        }
-        return  new Measurements(result,unit);
-
-    }
-
-    public void convertWeightToLength() {
-
-        if(this.unit == MeasurementTypes.GRAM){
-            this.unit = MeasurementTypes.METER;
-        }
-        else if(this.unit == MeasurementTypes.KILOGRAM){
-            this.unit = MeasurementTypes.KILOMETER;
-        }
-    }
-
-    public void convertToLengthToWeight() {
-
-        if(this.unit == MeasurementTypes.METER){
-            this.unit = MeasurementTypes.GRAM;
-        }
-        else if(this.unit == MeasurementTypes.KILOMETER){
-            this.unit = MeasurementTypes.KILOGRAM;
-        }
-        }
 
 }
