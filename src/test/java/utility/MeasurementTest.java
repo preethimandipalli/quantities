@@ -101,4 +101,26 @@ public class MeasurementTest {
         assertEquals(actualValue,expectedValue);
     }
 
+    @Test
+    void testIf0CelsiusIsEqualTo32Fahrenheit(){
+        Temperature measurement1 = new Temperature(53.6, MeasurementTypes.FAHRENHEIT);
+        Temperature measurement2 = new Temperature(12, MeasurementTypes.CELSIUS);
+
+        boolean actualValue = measurement1.equals(measurement2);
+
+        assertTrue(actualValue);
+
+    }
+    @Test
+    void testIf0KelvinIsEqualToMinus273Celsius(){
+        Temperature measurement1 = new Temperature(0, MeasurementTypes.KELVIN);
+        Temperature measurement2 = new Temperature(-273, MeasurementTypes.CELSIUS);
+
+        boolean actualValue = measurement1.equals(measurement2);
+
+        assertTrue(actualValue);
+
+    }
+
+
 }

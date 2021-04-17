@@ -5,15 +5,14 @@ public abstract class Measurements<T extends Measurements >{
     double quantity;
     MeasurementTypes unit;
 
-
     public Measurements(double dimension, MeasurementTypes unit) {
         this.quantity = dimension;
         this.unit = unit;
-
     }
     public abstract double ConvertIntoDefaultUnit(double dimension, MeasurementTypes unit);
+    public abstract MeasurementTypes getDefaultType();
     public T add(T measurement2) {
-        double value1 = ConvertIntoDefaultUnit(quantity,unit) ;
+        double value1 = ConvertIntoDefaultUnit(quantity,unit);
         double value2 = ConvertIntoDefaultUnit(measurement2.quantity,measurement2.unit);
         double sum = value1 + value2;
         MeasurementTypes defaultType = getDefaultType();
@@ -23,7 +22,6 @@ public abstract class Measurements<T extends Measurements >{
         return (T) new Length(sum,defaultType);
     }
 
-    public abstract MeasurementTypes getDefaultType();
 
     public T subtract(T measurement2){
         double value1 = ConvertIntoDefaultUnit(quantity,unit);
@@ -41,9 +39,7 @@ public abstract class Measurements<T extends Measurements >{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Measurements that = (Measurements) o;
-        System.out.println(ConvertIntoDefaultUnit(quantity,unit));
-        System.out.println(ConvertIntoDefaultUnit(that.quantity,that.unit));
-        return (ConvertIntoDefaultUnit(quantity,unit) == ConvertIntoDefaultUnit(that.quantity,that.unit));
+        return ((int)ConvertIntoDefaultUnit(quantity,unit)== (int)ConvertIntoDefaultUnit(that.quantity,that.unit));
     }
 
 }

@@ -5,5 +5,8 @@ public enum MeasurementTypes {
     CENTIMETER,
     KILOMETER,
     GRAM,
-    KILOGRAM;
+    KILOGRAM,
+    FAHRENHEIT,
+    CELSIUS,
+    KELVIN;
 }
